@@ -1,0 +1,935 @@
+/* PAKSA HALAMAN AGAR TIDAK BISA DIGESER KE KANAN */
+html,
+body {
+  max-width: 100%;
+  position: relative;
+}
+
+/* --- WARNA TEMA BARU (HIJAU & ORANYE) --- */
+:root {
+  /* 1. Warna Utama: Hijau Hutan (Untuk Teks, Icon, Garis) */
+  --bs-primary: #155e37;
+  --bs-primary-rgb: 21, 94, 55;
+
+  /* Warna Link (Hijau) */
+  --bs-link-color: #155e37;
+  --bs-link-hover-color: #0e4025;
+
+  /* 2. Warna Aksen: Oranye (Khusus Tombol Daftar) */
+  --brand-orange: #fd7e14;
+  --brand-orange-hover: #d66408;
+}
+
+/* Override Tombol Primary bawaan Bootstrap jadi Hijau */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+.btn-primary:hover {
+  background-color: var(--bs-link-hover-color);
+  border-color: var(--bs-link-hover-color);
+}
+
+/* Override Text Primary jadi Hijau */
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+/* === TOMBOL ORANYE KHUSUS (Untuk 'Daftar Sekarang') === */
+.btn-orange {
+  background-color: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-orange:hover {
+  background-color: var(--brand-orange-hover);
+  border-color: var(--brand-orange-hover);
+  color: white;
+  transform: translateY(-2px); /* Efek naik sedikit saat di-hover */
+  box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+}
+
+/* Update Page Header (Agar gradasinya Hijau) */
+.page-header {
+  background: linear-gradient(135deg, #155e37 0%, #0e4025 100%);
+}
+
+/* --- Custom CSS Overrides --- */
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navbar Modern */
+.navbar {
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 0;
+}
+.navbar-scrolled {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+.nav-link {
+  font-weight: 500;
+  color: #333 !important;
+  margin-left: 15px;
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bs-primary);
+  transition: width 0.3s;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+/* Buka file css/style.css dan TIMPA kode .hero-section yang lama dengan ini */
+
+.hero-section {
+  /* 1. Ini adalah lapisan gelap transparan (agar teks terbaca) */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    /* 2. Ini adalah foto gedung sekolahnya. GANTI URL di bawah ini dengan foto Anda sendiri */
+    url("img/WhatsApp\ Image\ 2026-01-24\ at\ 10.14.39.jpeg");
+
+  /* Pengaturan agar gambar menutupi area dengan sempurna */
+  background-size: cover;
+  background-position: center center;
+
+  /* Pengaturan tinggi dan posisi (sama seperti sebelumnya) */
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: relative;
+  padding-bottom: 150px; /* Memberi ruang agar konten tidak tertutup gelombang */
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 1. Tinggi Standar (Untuk HP/Layar Kecil) */
+.hero-wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 80px; /* Di HP cukup pendek saja biar tidak menutupi teks */
+}
+
+/* 2. Tinggi Khusus Layar Besar (Laptop/PC) */
+@media (min-width: 992px) {
+  .hero-wave svg {
+    height: 200px; /* Di Laptop dibuat tinggi/dalam biar keren */
+  }
+}
+
+/* Feature Cards (Hover Effect) */
+.feature-card {
+  border: none;
+  border-radius: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background: #fff;
+}
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #e9f5ee;
+  color: var(--bs-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Section Titles */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--bs-primary);
+}
+
+/* Stats Section */
+.stats-section {
+  background: var(--bs-primary);
+  color: white;
+  padding: 4rem 0;
+}
+
+/* Footer */
+footer {
+  background-color: #212529;
+  color: #aaa;
+  padding-top: 3rem;
+}
+footer a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer a:hover {
+  color: #fff;
+}
+/* Styling Peta */
+.map-container iframe {
+  width: 100%;
+  min-height: 350px;
+}
+
+/* Gallery Hover Effect */
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1); /* Zoom in saat mouse masuk */
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(21, 94, 55, 0.8); /* Hijau Transparan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Tersembunyi di awal */
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1; /* Muncul saat hover */
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: var(--bs-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  transition: all 0.4s;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+  background: #0e4025;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 30px; /* Sedikit efek naik saat muncul */
+}
+
+/* --- Styling Galeri Horizontal Scroll --- */
+
+.gallery-wrapper {
+  display: flex; /* Menyusun item ke samping */
+  overflow-x: auto; /* Mengizinkan scroll horizontal */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scroll-behavior: smooth; /* Efek geser yang halus */
+  gap: 20px; /* Jarak antar kartu */
+  padding: 10px 5px 20px 5px; /* Padding agar bayangan tidak terpotong */
+
+  /* Menyembunyikan Scrollbar (agar lebih rapi) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.gallery-wrapper.active {
+  cursor: grabbing; /* Gambar tangan menggenggam */
+  cursor: -webkit-grabbing;
+  transform: scale(1); /* Memastikan tidak ada efek zoom aneh */
+}
+
+/* Sembunyikan scrollbar di Chrome/Safari */
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-card {
+  /* Agar kartu tidak mengecil, kita kunci lebarnya */
+  flex: 0 0 300px;
+  min-width: 300px;
+}
+
+.gallery-card img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+/* untuk profile.html */
+/* --- Styling Halaman Profil --- */
+
+/* 1. Page Header (Pengganti Hero di Halaman Dalam) */
+.page-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  margin-top: 70px; /* Jarak dari Navbar */
+}
+
+/* Hiasan bulat-bulat di background header */
+.header-shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  left: -50px;
+}
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  right: -50px;
+}
+
+/* 2. Foto Kepala Sekolah */
+.kepsek-img-container {
+  width: 300px;
+  height: 300px;
+  /* Agar foto tetap bulat sempurna */
+}
+
+/* 3. Tabel Identitas */
+.table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+}
+.table td,
+.table th {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+/* --- Styling Timeline Sejarah --- */
+.timeline-box {
+  position: relative;
+  padding-left: 30px;
+  border-left: 3px solid #e9ecef; /* Garis vertikal */
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -39px; /* Posisi titik di atas garis */
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--bs-primary);
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(21, 94, 55, 0.2);
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: var(--bs-primary);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid var(--bs-primary); /* Aksen warna di kiri kotak */
+}
+
+/* ============================================================
+   GLOBAL OVERRIDE (Cara Paling Benar & Bersih)
+   ============================================================ */
+
+/* 3. PERBAIKAN TOTAL TOMBOL UTAMA (Solid) */
+.btn-primary {
+  --bs-btn-bg: #155e37;
+  --bs-btn-border-color: #155e37;
+  --bs-btn-hover-bg: #0e4025;
+  --bs-btn-hover-border-color: #0e4025;
+  --bs-btn-active-bg: #0e4025;
+  --bs-btn-disabled-bg: #155e37;
+  --bs-btn-disabled-border-color: #155e37;
+}
+
+/* 4. PERBAIKAN TOTAL TOMBOL GARIS (Outline) 
+   Ini yang kemarin "bandel" masih biru. Kita ubah variabel internalnya. */
+.btn-outline-primary {
+  --bs-btn-color: #155e37;
+  --bs-btn-border-color: #155e37;
+
+  --bs-btn-hover-bg: #155e37;
+  --bs-btn-hover-border-color: #155e37;
+  --bs-btn-hover-color: #ffffff;
+
+  --bs-btn-active-bg: #155e37;
+  --bs-btn-active-border-color: #155e37;
+  --bs-btn-active-color: #ffffff;
+
+  --bs-btn-disabled-color: #155e37;
+  --bs-btn-disabled-border-color: #155e37;
+}
+
+/* 5. PERBAIKAN TEXT & BACKGROUND LAIN */
+.text-primary {
+  color: #155e37 !important;
+}
+.bg-primary {
+  background-color: #155e37 !important;
+}
+/* =========================================
+   FIX WARNA PROFIL (Ganti Biru jadi Hijau)
+   ========================================= */
+
+/* 1. Ganti Warna Header Gradient (Background Judul Halaman) */
+.page-header {
+  /* Ganti gradasi biru menjadi gradasi Hijau Hutan */
+  background: linear-gradient(135deg, #155e37 0%, #0e4025 100%) !important;
+}
+
+/* 2. Ganti Warna Timeline (Sejarah) */
+.timeline-dot {
+  /* Titik bulat timeline */
+  background-color: #155e37 !important;
+  box-shadow: 0 0 0 3px rgba(21, 94, 55, 0.2) !important; /* Efek bayangan hijau pudar */
+}
+
+.timeline-content {
+  /* Garis pinggir kotak sejarah */
+  border-left: 4px solid #155e37 !important;
+}
+
+.timeline-date {
+  /* Tulisan tahun */
+  color: #155e37 !important;
+}
+
+/* 3. Ganti Warna Tabs (Tombol Pilihan Fasilitas: Akademik/Olahraga) */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #155e37 !important; /* Tombol aktif jadi Hijau */
+}
+
+.nav-pills .nav-link {
+  color: #155e37; /* Teks tombol tidak aktif jadi Hijau */
+}
+
+/* 4. Ganti Badge Nama Kepala Sekolah */
+.badge-name {
+  background-color: #155e37 !important;
+}
+
+/* 5. Ganti Icon Box Visi Misi */
+.icon-box {
+  color: #155e37 !important;
+  background: #e9f5ee !important; /* Background hijau sangat muda */
+}
+
+/* =========================================
+   CUSTOM TABS FASILITAS (Gaya Outline)
+   ========================================= */
+
+/* 1. Keadaan Normal (Belum Dipilih) */
+.nav-pills .nav-link {
+  background-color: transparent !important; /* Transparan (Bolong) */
+  border: 2px solid #155e37 !important; /* Garis Pinggir Hijau */
+  color: #155e37 !important; /* Teks Hijau */
+  margin: 0 5px; /* Jarak antar tombol */
+  font-weight: 600; /* Teks agak tebal */
+  transition: all 0.3s ease;
+}
+
+/* 2. Keadaan Aktif (Sedang Dipilih) & Hover (Disentuh Mouse) */
+.nav-pills .nav-link.active,
+.nav-pills .nav-link:hover {
+  background-color: #155e37 !important; /* Isi jadi Hijau Penuh */
+  color: #ffffff !important; /* Teks jadi Putih */
+  box-shadow: 0 4px 10px rgba(21, 94, 55, 0.3); /* Sedikit bayangan */
+}
+
+/* =========================================
+   HALAMAN GURU (Teacher Card Styles)
+   ========================================= */
+
+.teacher-card {
+  border: 1px solid #f0f0f0; /* Garis tipis halus */
+  transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-5px); /* Naik sedikit saat hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.teacher-img-wrapper {
+  overflow: hidden; /* Agar gambar tidak keluar kotak saat di-zoom */
+  height: 300px; /* Tinggi foto seragam */
+}
+
+.teacher-img-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Foto crop otomatis agar rapi */
+  object-position: top; /* Fokus ke wajah (atas) */
+  transition: transform 0.5s ease;
+}
+
+/* Efek Zoom Foto saat Hover */
+.teacher-card:hover .teacher-img-wrapper img {
+  transform: scale(1.1);
+}
+
+/* Overlay Sosial Media */
+.teacher-social {
+  position: absolute;
+  bottom: -50px; /* Sembunyi di bawah */
+  left: 0;
+  width: 100%;
+  background: rgba(21, 94, 55, 0.9); /* Hijau Transparan */
+  padding: 10px 0;
+  transition: bottom 0.3s ease;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.teacher-social a {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.teacher-social a:hover {
+  color: var(--brand-orange); /* Berubah Oranye saat ikon disentuh */
+}
+
+/* Munculkan Sosial Media saat Card di-Hover */
+.teacher-card:hover .teacher-social {
+  bottom: 0; /* Naik ke atas */
+}
+
+/* =========================================
+   HALAMAN BERITA (News Card Styles)
+   ========================================= */
+
+.news-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px); /* Kartu naik sedikit */
+  box-shadow: 0 10px 20px rgba(21, 94, 55, 0.15) !important; /* Bayangan Hijau Halus */
+}
+
+.news-card .card-img-top {
+  height: 200px;
+  object-fit: cover; /* Agar gambar tidak gepeng */
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .card-img-top {
+  transform: scale(1.05); /* Gambar zoom in halus */
+}
+
+/* Pagination Hijau */
+.pagination .page-link {
+  color: var(--bs-primary); /* Teks hijau */
+  border: none;
+  margin: 0 5px;
+  border-radius: 50%; /* Bulat */
+  width: auto;
+  padding: 0 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--bs-primary); /* Background hijau */
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9f5ee; /* Hover hijau pudar */
+  color: var(--bs-primary);
+}
+
+/* =========================================
+   CUSTOM POPUP STYLE
+   ========================================= */
+
+/* 1. Layar Belakang (Gelap & Blur) */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Hitam transparan */
+  backdrop-filter: blur(5px); /* Efek blur keren di belakang */
+  z-index: 9999; /* Pastikan di paling atas */
+  display: none; /* Sembunyi dulu */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 2. Kotak Pesan (Putih) */
+.popup-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.7); /* Mulai dari kecil */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal (bouncy) */
+}
+
+/* 3. Ikon Centang Besar */
+.popup-icon {
+  font-size: 5rem; /* Besar sekali */
+  color: #155e37; /* Warna Hijau Sekolah */
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+/* 4. Class Saat Popup Muncul (Aktif) */
+.popup-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+  transform: scale(1); /* Kembali ke ukuran normal */
+}
+
+/* Animasi Dropdown Halus */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+  border-radius: 10px; /* Sudut melengkung */
+  animation: fadeIn 0.3s ease; /* Animasi muncul */
+  margin-top: 10px; /* Jarak sedikit dari tombol atas */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efek Hover pada Item Dropdown */
+.dropdown-item:hover {
+  background-color: #e9f5ee; /* Warna hijau muda pudar saat disentuh */
+  color: #155e37; /* Teks jadi hijau tua */
+}
+
+/* =========================================
+   PERBAIKAN WARNA DROPDOWN (Agar Hijau)
+   ========================================= */
+
+/* 1. Saat item dropdown di-klik (Active) */
+.dropdown-item:active,
+.dropdown-item.active {
+  background-color: #155e37 !important; /* Hijau Tua Sekolah */
+  color: white !important;
+}
+
+/* 2. Saat item dropdown disentuh mouse (Hover) */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #e9f5ee; /* Hijau Muda Pudar (biar manis) */
+  color: #155e37; /* Teks jadi Hijau Tua */
+}
+
+/* ==================================================
+   PERBAIKAN WARNA MENU AKTIF (NAVBAR VS DROPDOWN)
+   ================================================== */
+
+/* 1. KHUSUS MENU ATAS (NAVBAR) */
+/* Saat aktif: Teks jadi Hijau, Background tetap bening */
+.navbar-nav .nav-link.active {
+  color: #155e37 !important; /* Teks Hijau */
+  background-color: transparent !important;
+  font-weight: bold;
+}
+
+/* ==================================================
+   PERBAIKAN WARNA MENU DROPDOWN (Gaya Lembut)
+   ================================================== */
+
+/* 1. KHUSUS MENU ATAS (NAVBAR) - Tetap Sama */
+.navbar-nav .nav-link.active {
+  color: #155e37 !important;
+  background-color: transparent !important;
+  font-weight: bold;
+}
+
+/* 2. KHUSUS MENU BAWAH (DROPDOWN) - INI YANG KITA UBAH */
+/* Saat aktif: Background Hijau Muda (Bukan Ijo Tua Full), Teks Hijau Tua */
+.dropdown-item.active {
+  background-color: #e9f5ee !important; /* Hijau Muda Pudar */
+  color: #155e37 !important; /* Teks Hijau Tua */
+  font-weight: bold;
+  border-left: 4px solid #155e37; /* (Opsional) Aksen garis kecil di kiri biar keren */
+}
+
+/* Efek Hover (Saat disentuh mouse) */
+.dropdown-item:hover {
+  background-color: #dcedc8; /* Hijau sedikit lebih gelap dari aktif */
+  color: #155e37 !important;
+}
+
+/* --- CSS KISAH SUKSES ALUMNI (HORIZONTAL SCROLL) --- */
+.alumni-wrapper {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Mengizinkan scroll horizontal */
+  padding: 20px 5px;
+  scroll-behavior: auto;
+
+  /* Sembunyikan Scrollbar agar rapi */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+
+  cursor: grab; /* Gambar tangan terbuka */
+  cursor: -webkit-grab;
+
+  /* Mencegah teks ter-blok biru saat ditarik */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.alumni-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.alumni-wrapper.active {
+  cursor: grabbing; /* Gambar tangan menggenggam saat diklik */
+  cursor: -webkit-grabbing;
+}
+
+.alumni-card-scroll {
+  /* Kunci lebar kartu agar tidak mengecil */
+  flex: 0 0 350px;
+  background: white;
+  border-radius: 15px;
+  border-left: 5px solid #198754; /* Garis Hijau di kiri */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.alumni-card-scroll:hover {
+  transform: translateY(-5px); /* Efek naik saat disentuh */
+  box-shadow: 0 10px 25px rgba(21, 94, 55, 0.15);
+}
+
+/* Khusus layar HP (lebar di bawah 768px) */
+@media (max-width: 768px) {
+  .jumbotron .btn {
+    display: block; /* Ubah jadi balok (turun ke bawah) */
+    width: 100%; /* Lebar tombol 100% layar */
+    margin-bottom: 10px; /* Jarak antar tombol */
+  }
+}
+
+/* 1. Container Utama Link (untuk animasi hover secara global) */
+.see-all-animated {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.see-all-animated:hover {
+  transform: translateX(8px); /* Sedikit geser ke kanan saat di-hover */
+}
+
+/* 2. Styling Container Ikon dan Animasi Pulsa */
+.icon-circle-ripple {
+  width: 80px; /* Ukuran ikon */
+  height: 80px;
+  background-color: #198754; /* Warna hijau success */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  position: relative; /* Penting untuk posisi elemen gelombang di dalamnya */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  z-index: 1; /* Di depan gelombang */
+}
+
+.see-all-animated:hover .icon-circle-ripple {
+  background-color: #146c43; /* Warna hijau yang lebih gelap saat hover */
+  box-shadow: 0 5px 15px rgba(20, 108, 67, 0.4); /* Efek bayangan hijau pudar */
+}
+
+/* 3. Definisi Gelombang (Ripple) */
+.icon-circle-ripple .ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(25, 135, 84, 0.6); /* Hijau transparan */
+  animation: pulse-ripple 2s infinite ease-out;
+  z-index: -1; /* Di belakang ikon */
+  pointer-events: none; /* Biar tidak mengganggu klik */
+}
+
+/* Gelombang Kedua dengan Sedikit Penundaan */
+.icon-circle-ripple .ripple-delay {
+  animation-delay: 1s;
+}
+
+/* Definisi Animasi Pulsa */
+@keyframes pulse-ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6); /* Gelombang meluas hingga 1.6x ukuran asli */
+    opacity: 0; /* Menghilang di ujung */
+  }
+}
+
+/* 4. Update Teks Tepat di Bawah Ikon */
+.see-all-animated span {
+  transition: color 0.3s ease;
+}
+
+.see-all-animated:hover span {
+  color: #146c43 !important; /* Warna teks juga berubah saat hover */
+}
+
+#galleryScroll {
+  cursor: grab;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  user-select: none;
+  /* Mencegah seleksi teks/gambar saat drag */
+  -webkit-overflow-scrolling: touch;
+}
+
+#galleryScroll:active {
+  cursor: grabbing;
+}
+
+/* Mencegah gambar ikut "terangkat" saat di-drag mouse */
+#galleryScroll img,
+#galleryScroll a {
+  -webkit-user-drag: none;
+  pointer-events: auto;
+  /* Tetap biarkan klik, tapi drag akan diatur JS */
+}
+
+/* Opsional: Hilangkan pointer jika ingin fokus pada fungsi grab */
+#galleryScroll .glightbox {
+  cursor: inherit;
+}
+
+/* Menghilangkan paksa kotak deskripsi/caption putih di GLightbox */
+.gdesc-inner,
+.gslide-description {
+  display: none !important;
+}
+
+/* Memastikan area gambar tetap proporsional setelah deskripsi dihilangkan */
+.gslide-image img {
+  max-height: 95vh !important;
+}
