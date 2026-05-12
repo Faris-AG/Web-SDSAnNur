@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
   <div class="container">
-    
+
     <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="/">
       <img src="img/icon.png" alt="Logo" width="40" class="me-2">
       <span>SDS ISLAM AN NUR</span>
@@ -13,8 +13,7 @@
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -23,7 +22,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown"
@@ -31,8 +30,7 @@
             id="navbarDropdown"
             role="button"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+            aria-expanded="false">
             Tentang
           </a>
           <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="navbarDropdown">
@@ -41,6 +39,36 @@
             </li>
             <li>
               <a class="dropdown-item" href="guru">Tenaga Pengajar</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="galeri">Galeri Kegiatan</a>
+            </li>
+          </ul>
+        </li>
+
+        <?php
+        $current_page = basename($_SERVER['PHP_SELF']);
+        ?>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown" href="#" id="navbarDropdownFasilitas" role="button" data-bs-toggle="dropdown">
+            Fasilitas
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="<?= ($current_page == 'profile.php') ? '#akademik' : 'profile#akademik' ?>">
+                Akademik
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="<?= ($current_page == 'profile.php') ? '#olahraga' : 'profile#olahraga' ?>">
+                Olahraga
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="<?= ($current_page == 'profile.php') ? '#penunjang' : 'profile#penunjang' ?>">
+                Penunjang
+              </a>
             </li>
           </ul>
         </li>
@@ -54,29 +82,31 @@
         <li class="nav-item">
           <a class="nav-link" href="kontak">Kontak</a>
         </li>
-        
+
         <li class="nav-item dropdown">
-            <a class="btn btn-orange rounded-pill px-4 ms-lg-3 dropdown-toggle" href="#" id="navbarDropdownPPDB" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Layanan PPDB
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end shadow border-0 animate__animated animate__fadeIn" aria-labelledby="navbarDropdownPPDB">
-                <li>
-                    <a class="dropdown-item py-2" href="panduan">
-                        <i class="bi bi-info-circle me-2 text-primary"></i> Panduan Pendaftaran
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item py-2" href="ppdb">
-                        <i class="bi bi-pencil-square me-2 text-success"></i> Form Pendaftaran
-                    </a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                    <a class="dropdown-item py-2" href="cek-status">
-                        <i class="bi bi-search me-2 text-danger"></i> Cek Status Kelulusan
-                    </a>
-                </li>
-            </ul>
+          <a class="btn btn-orange rounded-pill px-4 ms-lg-3 dropdown-toggle" href="#" id="navbarDropdownPPDB" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Layanan PPDB
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0 animate__animated animate__fadeIn" aria-labelledby="navbarDropdownPPDB">
+            <li>
+              <a class="dropdown-item py-2" href="panduan">
+                <i class="bi bi-info-circle me-2 text-primary"></i> Panduan Pendaftaran
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item py-2" href="ppdb">
+                <i class="bi bi-pencil-square me-2 text-success"></i> Form Pendaftaran
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item py-2" href="cek-status">
+                <i class="bi bi-search me-2 text-danger"></i> Cek Status Kelulusan
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
