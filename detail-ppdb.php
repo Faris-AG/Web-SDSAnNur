@@ -35,9 +35,19 @@ include 'admin-header.php';
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Detail Calon Siswa</h1>
-    <a href="admin-ppdb.php" class="btn btn-secondary shadow-sm">
-        <i class="fas fa-arrow-left fa-sm text-white-50"></i> Kembali
-    </a>
+    <div>
+        <a href="cetak-bukti.php?id=<?= $id ?>" target="_blank" class="btn btn-primary shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Cetak Bukti
+        </a>
+        
+        <a href="download-ppdb.php?id=<?= $id ?>" class="btn btn-success shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Download
+        </a>
+        
+        <a href="admin-ppdb.php" class="btn btn-secondary shadow-sm">
+            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Kembali
+        </a>
+    </div>
 </div>
 
 <div class="row">
@@ -49,13 +59,34 @@ include 'admin-header.php';
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <tr><th width="35%">No. Registrasi</th><td>: <span class="badge badge-dark"><?= $data['no_registrasi']; ?></span></td></tr>
-                        <tr><th>Nama Lengkap</th><td>: <strong><?= $data['nama_siswa']; ?></strong></td></tr>
-                        <tr><th>NIK / NISN</th><td>: <?= $data['nik']; ?> / <?= $data['nisn']; ?></td></tr>
-                        <tr><th>Asal Sekolah</th><td>: <?= $data['asal_sekolah']; ?></td></tr>
-                        <tr><th>Tempat, Tgl Lahir</th><td>: <?= $data['tempat_lahir']; ?>, <?= date('d M Y', strtotime($data['tgl_lahir'])); ?></td></tr>
-                        <tr><th>Jenis Kelamin</th><td>: <?= $data['jenis_kelamin']; ?></td></tr>
-                        <tr><th>Alamat</th><td>: <?= $data['alamat']; ?></td></tr>
+                        <tr>
+                            <th width="35%">No. Registrasi</th>
+                            <td>: <span class="badge badge-dark"><?= $data['no_registrasi']; ?></span></td>
+                        </tr>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <td>: <strong><?= $data['nama_siswa']; ?></strong></td>
+                        </tr>
+                        <tr>
+                            <th>NIK / NISN</th>
+                            <td>: <?= $data['nik']; ?> / <?= $data['nisn']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Asal Sekolah</th>
+                            <td>: <?= $data['asal_sekolah']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Tempat, Tgl Lahir</th>
+                            <td>: <?= $data['tempat_lahir']; ?>, <?= date('d M Y', strtotime($data['tgl_lahir'])); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Jenis Kelamin</th>
+                            <td>: <?= $data['jenis_kelamin']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Alamat</th>
+                            <td>: <?= $data['alamat']; ?></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -115,7 +146,7 @@ include 'admin-header.php';
                 <h6 class="m-0 font-weight-bold text-primary">Kelola Status Pendaftaran</h6>
             </div>
             <div class="card-body text-center">
-                <p class="small text-muted mb-3">Status Saat Ini: 
+                <p class="small text-muted mb-3">Status Saat Ini:
                     <span class="badge badge-<?= ($data['status'] == 'Pending' ? 'warning' : ($data['status'] == 'Diterima' ? 'success' : 'danger')) ?>">
                         <?= strtoupper($data['status']); ?>
                     </span>
